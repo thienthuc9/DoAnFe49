@@ -49,45 +49,52 @@ export default function UpdateFilms() {
 
     // }
     return (
-        
-       
-                            <form  className="container"  >
-
-                                <div className="form-group">
-                                    <p>Tên Phim</p>
-                                    <input name="tenPhim" className="form-control" onChange={handleChange} value={upDate.tenPhim} />
-                                </div>
-                                <div className="form-group">
-                                    <p>Bí Danh</p>
-                                    <input name="biDanh" className="form-control" onChange={handleChange} value={upDate.biDanh} />
-                                </div>
-                                <div className="form-group">
-                                    <p>Trailler</p>
-                                    <input name="trailer" className="form-control" onChange={handleChange} value={upDate.trailer} />
-                                </div>
-                                <div className="form-group">
-                                    <p>Hình Ảnh</p>
-                                    <input type='file' name="hinhAnh" className="form-control" onChange={handleChange}   />
-
-                                </div>
-                                <div className="form-group">
-                                    <p>Ngày Khởi Chiếu</p>
-                                    <input type='date' name="ngayKhoiChieu" className="form-control" onChange={handleChange} value={moment(upDate.ngayKhoiChieu).format('YYYY-MM-DD')} />
 
 
+        <form className="container"  >
 
-                                </div>
-                                <div className="form-group">
-                                    <p>Mô Tả</p>
-                                    <textarea name="moTa" className="form-control" onChange={handleChange} aria-label="With textarea" value={upDate.moTa}></textarea>
+            <div className="form-group">
+                <p>Tên Phim</p>
+                <input name="tenPhim" className="form-control" onChange={handleChange} value={upDate.tenPhim} />
+            </div>
+            <div className="form-group">
+                <p>Bí Danh</p>
+                <input name="biDanh" className="form-control" onChange={handleChange} value={upDate.biDanh} />
+            </div>
+            <div className="form-group">
+                <p>Trailler</p>
+                <input name="trailer" className="form-control" onChange={handleChange} value={upDate.trailer} />
+            </div>
 
-                                </div>
-                                <div className="form-group">
-                                    <button type="button" className="btn btn-danger" data-dismiss="modal">Đóng</button>
-                                    <button type="submit" className="btn btn-primary">Thêm</button>
-                                </div>
+            {
+                upDate.hinhAnh && <img src={upDate.hinhAnh} />
+            }
 
-                            </form>
-           
+            <div className="form-group">
+                <p>Hình Ảnh</p>
+                <input type='file' name="hinhAnh" className="form-control" onChange={handleChange} />
+
+            </div>
+
+
+            <div className="form-group">
+                <p>Ngày Khởi Chiếu</p>
+                <input type='date' name="ngayKhoiChieu" className="form-control" onChange={handleChange} value={moment(upDate.ngayKhoiChieu).format('YYYY-MM-DD')} />
+
+
+
+            </div>
+            <div className="form-group">
+                <p>Mô Tả</p>
+                <textarea name="moTa" className="form-control" onChange={handleChange} aria-label="With textarea" value={upDate.moTa}></textarea>
+
+            </div>
+            <div className="form-group">
+                <button type="button" className="btn btn-danger" data-dismiss="modal">Đóng</button>
+                <button type="submit" className="btn btn-primary">Thêm</button>
+            </div>
+
+        </form>
+
     )
 }
