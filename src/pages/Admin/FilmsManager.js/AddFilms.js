@@ -104,7 +104,7 @@ export default function AddFilms() {
                                 <div className="form-group">
                                     <p>Hình Ảnh</p>
                                     <input type='file' name="hinhAnh" className="form-control" onChange={handleChange} />
-
+                                 
                                 </div>
                                 <div className="form-group">
                                     <p>Ngày Khởi Chiếu</p>

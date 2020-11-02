@@ -3,7 +3,9 @@ import { LAY_CHI_TIET_HE_THONG_RAP, LAY_CHI_TIET_HE_THONG_RAP_THEOID, LAY_HE_THO
 const initialState ={
     dsRap :[],
     dsChiTietRap:[],
-    dsChiTietRapTheoID:[]
+    dsChiTietRapTheoID:[],
+    dsHTR:[],
+    list:[]
 
 }
 
@@ -25,7 +27,17 @@ const QuanLyRapPhimReducer =(state = initialState,actions)=>{
             state.dsChiTietRapTheoID = actions.dsChiTietRapTheoID;
             return{...state}
         }
-            
+         case 'LAY_CUM_RAP_THEO_HE_THONG_RAP':{
+            state.dsHTR = actions.dsHTR
+            return{...state}
+
+         }
+         case 'LAY_LIST':{
+            state.list = actions.list
+            console.log(state.list)
+            return{...state}
+
+         }
     
         default:
             return state;

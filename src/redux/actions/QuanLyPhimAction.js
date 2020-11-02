@@ -141,4 +141,48 @@ export const chinhSuaPhim = (PhimDcChon) => ({
     type:"CHINH_SUA_PHIM",
     PhimDcChon
    
-})  
+})
+
+export const ThemLichChieuPhim =(AddLichChieu)=>{
+    console.log(AddLichChieu)
+    return(dispatch)=>{
+        const {accessToken} =JSON.parse(localStorage.getItem("userLogin"));
+
+        axios({
+            url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/TaoLichChieu',
+            method:'POST',
+            data: {
+                maPhim: AddLichChieu.maPhim,
+                ngayChieuGioChieu:AddLichChieu.ngayChieuGioChieu,
+                maRap: AddLichChieu.maRap,
+                giaVe: AddLichChieu.giaVe
+            },
+            headers:{
+                Authorization: `Bearer ${accessToken}`,
+              }
+
+        }).then((result)=>{
+            // dispatch({
+            //     type:"THEM_LICH_CHIEU", 
+            //     themLichChieu: AddLichChieu
+            // })
+            swal.fire(
+                '',
+                `Thêm Phim Thành Công`,
+                'success'
+            )
+
+        }).catch((err)=>{
+            // console.log(err)
+            swal.fire(
+                '',
+                `${err.response.data}`,
+                'error'
+            )
+           
+        })
+            
+        
+    }
+    
+}

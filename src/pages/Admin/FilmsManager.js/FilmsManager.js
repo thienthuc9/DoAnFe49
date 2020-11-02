@@ -4,6 +4,7 @@ import { layDanhSachPhimApiAction, XoaPhim, chinhSuaPhim } from '../../../redux/
 import AddFilms from './AddFilms';
 import moment from 'moment';
 import UpdateFilms from './UpdateFilms';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -47,7 +48,7 @@ export default function FilmsManager() {
                                 <td>  {moment(Phim.ngayKhoiChieu).format('DD-MM-YYYY')}</td>
                                 <td>
                                     <button className='btn btn-danger' type='submit' onClick={() => DeletePhim(Phim.maPhim)} >Xóa</button>
-
+                                    <NavLink  to={`/admin/films/${Phim.maPhim}`} className='btn btn-success ml-2'>Thêm Lịch Chiếu</NavLink>
                                 </td>
                                 <td>
                                     <button type="button" className="btn btn-warning" data-toggle="modal" data-target={`#${Phim.maPhim}`} onClick={() => {

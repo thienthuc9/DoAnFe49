@@ -19,6 +19,7 @@ import ChiTietRap from './pages/ChiTietRap/ChiTietRap';
 import SignUp from './pages/SignUp/SignUp';
 import AddUser from './pages/Admin/UsersManager/AddUser';
 import test from './pages/Admin/UsersManager/test';
+import AddLichChieu from './pages/Admin/FilmsManager.js/AddLichChieu';
 function App() {
   return (
     <BrowserRouter>
@@ -42,6 +43,7 @@ function App() {
 
         <AdminTemplate exact path='/admin/users' Component={UserManager} />
         <AdminTemplate exact path ='/admin/test' Component={test}></AdminTemplate>
+        <AdminTemplate exact path='/admin/films/:id' Component={AddLichChieu}></AdminTemplate>
         <Route exact path='/booking/:maLichChieu' render={(propsRoute)=>{
             return <Booking {...propsRoute} />
         }}/>

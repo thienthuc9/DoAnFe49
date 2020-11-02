@@ -2,8 +2,8 @@ import { LAY_CHI_TIET_PHIM, LAY_DANH_SACH_PHIM } from "../constants/QuanLyPhimCo
 
 const stateDefault = {
     dsPhim: [],
-    chiTietPhim: {},
-    phimDcChon:[]
+    chiTietPhim: [],
+    phimDcChon:[],
 }
 
 
@@ -37,7 +37,10 @@ const QuanLyPhimReducer = (state = stateDefault, action) => {
             state.phimDcChon = action.PhimDcChon
             return{...state}
         }
-
+        // case "THEM_LICH_CHIEU":{
+        //     state.chiTietPhim =[...state.chiTietPhim]
+        //     return{...state}
+        // }
         default: return state;
     }
 }

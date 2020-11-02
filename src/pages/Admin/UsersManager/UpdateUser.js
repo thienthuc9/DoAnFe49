@@ -31,8 +31,10 @@ export default function UpdateUser() {
         e.preventDefault();
         //Gọi api đăng nhập
         dispatch(CapNhatNguoiDungAdmin(upDate))
+ 
 
     }
+
     return (
         <form onSubmit={upp} className="container"  >
             <div className="form-group">

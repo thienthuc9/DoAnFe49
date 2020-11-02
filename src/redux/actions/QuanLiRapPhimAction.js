@@ -22,6 +22,33 @@ export const LayDanhSachRapPhim =()=>{
     }
     
 }
+export const LayThongTinCumRapTheoHeThongRap =(maHeThongRap)=>{
+    return(dispatch)=>{
+        Axios({
+            url:`https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`,
+            method:'GET'
+
+        }).then((result)=>{
+           dispatch({
+               type: 'LAY_CUM_RAP_THEO_HE_THONG_RAP',
+               dsHTR : result.data,
+           })
+
+
+        }).catch((err)=>{
+            console.log(err);
+        })
+            
+        
+    }
+    
+}
+export const layDSMaRapTenRap = (list) => ({
+    
+    type:"LAY_LIST",
+    list
+   
+})  
 export const LayChiTietRapPhim =()=>{
     return(dispatch)=>{
         Axios({

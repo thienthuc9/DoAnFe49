@@ -66,13 +66,14 @@ export default function UpdateFilms() {
                 <input name="trailer" className="form-control" onChange={handleChange} value={upDate.trailer} />
             </div>
 
-            {
-                upDate.hinhAnh && <img src={upDate.hinhAnh} />
-            }
+            
+            
 
             <div className="form-group">
                 <p>Hình Ảnh</p>
                 <input type='file' name="hinhAnh" className="form-control" onChange={handleChange} />
+                <img src={upDate.hinhAnh} />
+
 
             </div>
 

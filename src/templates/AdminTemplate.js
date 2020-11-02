@@ -49,7 +49,7 @@ export const AdminTemplate = ({ Component, ...restProps }) => {
              
               <Breadcrumb.Item></Breadcrumb.Item>
             </Breadcrumb>
-            <Component >
+            <Component {...propsRoute} >
            
             </Component>
           </Content>
