@@ -10,8 +10,10 @@ export const layDanhSachGheAPI = (maLichChieu) => {
 
             dispatch({
                 type: LAY_DANH_SACH_GHE,
-                danhSachGhe: result.data.danhSachGhe,
+                danhSachGhe: result.data,
             })
+            // console.log(result.data)
+            // console.log(danhSachGhe);
         }).catch((err) => {
             console.log(err);
         })

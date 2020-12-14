@@ -19,6 +19,7 @@ export default (state = initialState, action) => {
     switch (action.type) {
     case 'DANG_NHAP':{
         state.userLogin = action.userLogin;
+        state.thongTinTaiKhoan = action.userLogin;
         return {...state};
     }
     case 'LAY_THONG_TIN_TK':{

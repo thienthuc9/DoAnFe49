@@ -1,0 +1,41 @@
+.footer {
+    background: #152f4f;
+    color:  #ffffffcc;
+    padding-top: 35px;
+  }
+
+.location p {
+   
+ color: #ffffffcc;
+    
+   
+   
+  }
+ .footer li{
+      margin: 15px;
+
+  }
+  li a{
+    color: #ffffffcc;
+
+  }
+  li i{
+    color: #0067fe;
+    font-size: 18px;
+    margin-right: 10px;
+  }
+.footer h4{
+    color: #fff;
+  }
+  .location i{
+    
+        font-size: 18px;
+        width: 30px;
+    
+  }
+  .location-item {
+    margin: 5px 0;
+  }
+  .copyright p {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }

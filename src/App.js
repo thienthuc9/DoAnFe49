@@ -20,6 +20,9 @@ import SignUp from './pages/SignUp/SignUp';
 import AddUser from './pages/Admin/UsersManager/AddUser';
 import test from './pages/Admin/UsersManager/test';
 import AddLichChieu from './pages/Admin/FilmsManager.js/AddLichChieu';
+import QlPhim from './pages/Admin/FilmsManager.js/QlPhim';
+import './css/main.css';
+
 function App() {
   return (
     <BrowserRouter>
@@ -30,19 +33,21 @@ function App() {
         <HomeTemplate exact path='/contact' Component={Contact}/>
         <HomeTemplate exact path='/about' Component={About} />
         <HomeTemplate exact path='/hoc' Component={DemoHOC} />
-        <HomeTemplate exact path='/login' Component={Login} />
-        <HomeTemplate exact path='/singup' Component={SignUp} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/singup' component={SignUp} />
         <HomeTemplate exact path='/profile' Component={Profile} />
 
         <HomeTemplate exact path='/detail/:id' Component={Detail} />
         <HomeTemplate exact path='/profile' Component={Profile} />
         <HomeTemplate exact path='/chitietrap/:id' Component={ChiTietRap}></HomeTemplate>
         <HomeTemplate exact path='/trangchu' Component={TrangChu} />
-        <AdminTemplate exact path='/admin/films' Component={FilmsManager} />
+        {/* <AdminTemplate exact path='/admin/films' Component={FilmsManager} /> */}
+        <AdminTemplate exact path='/admin/films' Component={QlPhim} />
+
         <AdminTemplate exact path='/admin/AddUser' Component={AddUser} />
 
-        <AdminTemplate exact path='/admin/users' Component={UserManager} />
-        <AdminTemplate exact path ='/admin/test' Component={test}></AdminTemplate>
+        {/* <AdminTemplate exact path='/admin/users' Component={UserManager} /> */}
+        <AdminTemplate exact path ='/admin/users' Component={test}></AdminTemplate>
         <AdminTemplate exact path='/admin/films/:id' Component={AddLichChieu}></AdminTemplate>
         <Route exact path='/booking/:maLichChieu' render={(propsRoute)=>{
             return <Booking {...propsRoute} />

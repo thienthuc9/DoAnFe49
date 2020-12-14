@@ -1,0 +1,89 @@
+ .select__film {
+     border: solid 2px #F7C437;
+    border-radius: 80px;
+    margin: 10px 150px 0px 150px;
+    background-color: rgba(72, 23, 105,15);
+    background-size: cover; }
+     .select__film-row {
+      display: flex;
+      align-items: center;
+      width: 80%;
+      height: 200px;
+      margin: auto; }
+      @media (max-width: 767px) {
+         .select__film-row {
+          width: 90%;
+          height: 320px;
+          flex-wrap: wrap; } }
+       .select__film-row .col {
+        flex: 1;
+        width: 50%; }
+        @media (max-width: 767px) {
+           .select__film-row .col {
+            min-width: 100%; } }
+         .select__film-row .col .block-title {
+          position: relative;
+          text-align: center; }
+           .select__film-row .col .block-title::before {
+            content: "";
+            position: absolute;
+            left: 8%;
+            top: -64%;
+            z-index: 1;
+            background: url("/images/icon-ticket.png") no-repeat;
+            width: 200px;
+            height: 200px;
+            background-size: 86%; }
+            @media (max-width: 767px) {
+               .select__film-row .col .block-title::before {
+                top: -8px;
+                width: 150px;
+                height: 150px; } }
+           .select__film-row .col .block-title h2 {
+            color: #F7C437;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 4px 2px 0 rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            line-height: 1.2;
+            margin-left: 120px; }
+         .select__film-row .col .block-list {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap; }
+           .select__film-row .col .block-list .item {
+            width: 50%;
+            margin: 8px 0; }
+             .select__film-row .col .block-list .item .ant-select {
+              width: 90%;
+              margin: auto; }
+               .select__film-row .col .block-list .item .ant-select .ant-select-selector {
+                background: url("/images/background-form.jpg") no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                height: 54px;
+                border-radius: 8px; }
+                @media (max-width: 767px) {
+                   .select__film-row .col .block-list .item .ant-select .ant-select-selector {
+                    background-attachment: unset; } }
+                 .select__film-row .col .block-list .item .ant-select .ant-select-selector .ant-select-selection-item {
+                  color: #F7C437;
+                  font-size: 1rem;
+                  font-weight: 600;
+                  display: inline-flex;
+                  align-items: center;
+                  text-transform: uppercase; }
+                 .select__film-row .col .block-list .item .ant-select .ant-select-selector .ant-select-selection-placeholder {
+                  color: #fff;
+                  font-size: 1rem;
+                  font-weight: 600;
+                  display: inline-flex;
+                  align-items: center;
+                  text-transform: uppercase; }
+               .select__film-row .col .block-list .item .ant-select .ant-select-arrow {
+                color: #F7C437;
+                font-size: 1rem;
+                font-weight: 600;
+                top: 48%;
+                right: 20px; }

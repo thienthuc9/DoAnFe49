@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import {NavLink, useHistory} from 'react-router-dom'
 import { dangNhapApiAction } from '../../redux/actions/QuanLyNguoiDungAction';
 //
+import './Login.css'
 
 export default function Login(props) {
 
@@ -48,24 +49,28 @@ export default function Login(props) {
     }
 
     return (
-        <form className="container" onSubmit={login}>
-            <h3 className="display-4 text-center">Đăng Nhập</h3>
-            <div className="form-group">
-                <p>Tài Khoản</p>
-                <input name="userName" className="form-control" onChange={handleChange} />
-            </div>
-            <div className="form-group">
-                <p>Mật Khẩu</p>
-                <input name="passWord" className="form-control" onChange={handleChange} />
-            </div>
-            <div className="form-group">
-                <button className="btn btn-success" type="submit">Đăng Nhập</button>
-                <NavLink className="btn btn-primary ml-2" to='/singup'>Đăng Ký Tài Khoản</NavLink>
+        <div className='dang__nhap'>
+        <form className='form_dangnhap'  onSubmit={login}>
+        <i class="fa fa-user-circle"></i>
 
+            <h4 className="display-4 text-center">Đăng Nhập</h4>
+            <div className="form-group">
+                <input placeholder='Tài Khoản' name="userName" className="form-control" onChange={handleChange} />
+            </div>
+            <div className="form-group">
+                <input placeholder='Mật Khẩu' name="passWord" className="form-control" onChange={handleChange} />
+            </div>
+            <div className="form-group">
+                <button className="form-control btn btn-primary" type="submit">Đăng Nhập</button>
+                {/* <NavLink className="btn btn-primary ml-2" to='/singup'>Đăng Ký Tài Khoản</NavLink> */}
+
+            </div>
+            <div className='dang_ky'>
+                <span>Hoặc </span> <NavLink to='/singup'>Đăng ký tại đây</NavLink>
             </div>
         </form>
 
-
+        </div>
     )
 }
 

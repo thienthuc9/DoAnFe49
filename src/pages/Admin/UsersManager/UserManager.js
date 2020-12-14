@@ -10,6 +10,7 @@ import {
 import { TextField } from '@material-ui/core';
 import AddUser from './AddUser';
 import UpdateUser from './UpdateUser';
+import UpdateFilms from '../FilmsManager.js/UpdateFilms';
 export default function UserManager() {
     const dispatch = useDispatch();
     let history = useHistory();
@@ -36,6 +37,10 @@ export default function UserManager() {
 
     const DeleteUser = (taiKhoan) => {
         dispatch(XoaNguoiDung(taiKhoan))
+        // useEffect(()=>{
+        //     dispatch(LayDanhSachNguoiDung())
+
+        // },[])
     }
     useEffect(() => {
         dispatch(LayDanhSachNguoiDung())
@@ -107,26 +112,7 @@ export default function UserManager() {
                                             Sửa
                                          </button>
 
-                                        <form  >
-
-                                            <div className="modal fade" id={`${nguoiDung.taiKhoan}`} tabIndex={-1} role="dialog" aria-labelledby="update" aria-hidden="true">
-                                                <div className="modal-dialog modal-dialog-centered" role="document">
-                                                    <div className="modal-content">
-                                                        <div className="modal-header">
-                                                            <h5 className="modal-title" id="exampleModalLongTitle">Chỉnh Sửa Tài Khoản</h5>
-                                                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true" style={{ color: 'red' }}>×</span>
-                                                            </button>
-                                                        </div>
-                                                        <div className="modal-body">
-                                                           <UpdateUser></UpdateUser>
-                                                        </div>
-                                                        <div className="modal-footer">
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div></form>
+                                       <UpdateUser></UpdateUser>
                                     </td>
                                 </tr>
                         })

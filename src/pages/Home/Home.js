@@ -5,6 +5,11 @@ import {connect,useSelector,useDispatch} from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import DemoHOC from '../HOC/DemoHOC';
 import HeThongRap from '../HeThongRap/HeThongRap';
+import Ungdung from '../../components/UngDung/Ungdung';
+import News from '../../components/News/News';
+import Carousel from '../../components/Carousel/Carousel';
+import PhimSlick from '../../components/ListPhimSlick/PhimSlick';
+import SelectPhim from '../../components/SelectPhim/SelectPhim';
  function Home(props) {
     //Dùng useSelector thay cho mapStateToProps lấy danh sách phim từ reducer về
     const danhSachPhim = useSelector(state => state.QuanLyPhimReducer.dsPhim);
@@ -90,6 +95,11 @@ import HeThongRap from '../HeThongRap/HeThongRap';
         })
     }
     return (
+        <div>
+            <Carousel></Carousel>
+            <SelectPhim></SelectPhim>
+            <PhimSlick></PhimSlick>
+
         <div className="container">
             {/* <button onClick={() => {
                 getFilm();
@@ -100,6 +110,10 @@ import HeThongRap from '../HeThongRap/HeThongRap';
             </div> */}
             <HeThongRap></HeThongRap>
         </div>
+        <News></News>
+        <Ungdung></Ungdung>
+        </div>
+
     )
 }
 

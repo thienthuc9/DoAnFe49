@@ -1,0 +1,90 @@
+// .footer{
+//     background-color: red ;
+//     color: red;
+// }
+// .footer {
+//     background: #152f4f;
+//     color: $color-fontD-o8;
+//     padding-top: 35px;
+//     @include for-size(md) {
+//       text-align: center;
+//     }
+  
+//     .links {
+//       @include for-size(md) {
+//         margin: 25px 0;
+//       }
+//       ul {
+//         list-style-type: none;
+//         @include for-size(md) {
+//           margin: 50px 0;
+//           display: flex;
+//           justify-content: center;
+//         }
+//         @include for-size(phone-sm) {
+//           display: block;
+//         }
+//         li {
+//           @include for-size(phone-sm) {
+//             margin: 5px;
+//           }
+//         }
+//       }
+//       li a {
+//         font-size: 15px;
+//         color: $color-fontD-o8;
+//         transition: color 0.3s;
+//         &:hover {
+//           text-decoration: none;
+//           color: $color-but-lo;
+//         }
+//         img {
+//           width: 18px;
+//           height: 18px;
+//         }
+//         i,
+//         img {
+//           margin: 5px 15px;
+//           @include for-size(md) {
+//             margin: 0 5px;
+//           }
+//         }
+//         i {
+//           color: #0067fe;
+//           font-size: 18px;
+//         }
+//         @include for-size(md) {
+//           margin: 0 10px;
+//         }
+//       }
+//     }
+//     .about-company {
+//       i {
+//         font-size: 25px;
+//       }
+//       a {
+//         color: $color-fontD;
+//         transition: color 0.3s;
+//         &:hover {
+//           color: $color-but-lo;
+//         }
+//       }
+//     }
+//     .location {
+//       p {
+//         color: $color-fontD-o8;
+//       }
+//       i {
+//         font-size: 18px;
+//         width: 30px;
+//         color:$color-fontD;
+//       }
+//       .location-item {
+//         margin: 5px 0;
+//       }
+//     }
+//     .copyright p {
+//       border-top: 1px solid rgba(255, 255, 255, 0.1);
+//     }
+//    }
+  

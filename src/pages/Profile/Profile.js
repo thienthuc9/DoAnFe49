@@ -1,10 +1,84 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { LayThongTinTaiKhoan } from '../../redux/actions/QuanLyNguoiDungAction';
 import moment from 'moment';
+import { Row, Col, Form, Input, Button, Table, Tooltip, message } from 'antd';
+import'./Profile.css'
 
 export default function Profile(props) {
+    const columns = [
+        {
+            title: 'Mã Vé',
+            key: 'maVe',
+            render: (item) => (
+                <Tooltip placement="topLeft" title={item.maVe}>
+                    <span>{item.maVe}</span>
+                </Tooltip>   
+            )
+        },
+        {
+            title: 'Tên Phim',
+            key: 'tenPhim',
+            render: (item) => (
+                <Tooltip placement="topLeft" title={item.tenPhim}>
+                    <span>{item.tenPhim}</span>
+                </Tooltip>   
+            )
+        },
+        {
+            title: 'Ngày Đặt',
+            key: 'ngayDat',
+            render: (item) => (
+                <Tooltip placement="topLeft" title={item.ngayDat}>
+                    <span>{item.ngayDat}</span>
+                </Tooltip>   
+            )
+        },
+        {
+            title: 'Giá Vé',
+            key: 'giaVe',
+            render: (item) => (
+                <Tooltip placement="topLeft" title={item.giaVe.toLocaleString()}>
+                    <span>{item.giaVe.toLocaleString()}</span>
+                </Tooltip>   
+            )
+        },
+        {
+            title: 'Tên Rạp',
+            key: 'tenHeThongRap',
+            render: (item) => {
+                let tenRap = item.danhSachGhe[0].tenHeThongRap;
+                return <Tooltip placement="topLeft" title={tenRap}>
+                            <span>{tenRap}</span>
+                               
+                </Tooltip>   
+            }
+        },
+        {
+            title: 'Phòng',
+            key: 'tenRap',
+            render: (item) => {
+                let tenRap = item.danhSachGhe[0].tenRap;
+                return <Tooltip placement="topLeft" title={tenRap}>
+                            <span>{tenRap}</span>
+                               
+                </Tooltip>   
+            }
+        },
+        {
+            title: 'Ghế',
+            key: 'danhSachGhe',
+            render: (item) => {
+                let tenGhe = item.danhSachGhe.map((item) => {
+                    return item.tenGhe;
+                }).join();
+                return <Tooltip placement="topLeft" title={tenGhe}>
+                            <span>{tenGhe}</span>        
+                </Tooltip>   
+            }
+        }
+    ];
     const { thongTinTaiKhoan } = useSelector((state) => state.QuanLyNguoiDungReducer);
     console.log(thongTinTaiKhoan)
     let dispatch = useDispatch();
@@ -16,7 +90,7 @@ export default function Profile(props) {
     }, [])
     // console.log(userLogin.taiKhoan)
     if (localStorage.getItem('userLogin')) {
-
+        
         return <div className='container'>
             <div className="card" style={{ width: '18rem' }}>
                 <img className="card-img-top" src="https://picsum.photos/300/300" alt="Card image cap" />
@@ -24,11 +98,16 @@ export default function Profile(props) {
                     <p className="card-text">Xin Chào {`${thongTinTaiKhoan.hoTen}`}</p>
                     <p>Số Điện thoại: {thongTinTaiKhoan.soDT}</p>
                     <p>Email: {thongTinTaiKhoan.email}</p>
+                    {userLogin.maLoaiNguoiDung === 'QuanTri' ?
+                <NavLink to="/admin/films">Quản trị hệ thống</NavLink>
+                :
+                <></>
+                   }
 
                 </div>
             </div>
             <h1 className='text-center'>LỊCH SỬ ĐẶT VÉ</h1>
-            <table class="table">
+            {/* <table class="table">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col"> Mã Vé</th>
@@ -113,7 +192,13 @@ export default function Profile(props) {
 
 
                 </tbody>
-            </table>
+
+            </table> */}
+            <div className='info_ticket'>
+            <Table dataSource={thongTinTaiKhoan.thongTinDatVe} columns={columns}  pagination={{ pageSize: 6 }} />
+
+            </div>
+
         </div>
     } else {
 

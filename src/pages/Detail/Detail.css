@@ -1,0 +1,56 @@
+.detail .back-img{
+    height: 600px;
+    background-size: cover;
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: 100% 100%;
+
+}
+.detail .back-img::before{
+    background-color: rgba(2,13,24,.75);
+    position: absolute;
+    content: "";
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(2,13,24,.75);
+}
+.thongtinPhim{
+    left: 100px;
+    position: absolute;
+    /* height: auto; */
+    width: 100%;
+    top: 250px;
+}
+.thongtinPhim h1 {
+    color: #fff;
+}
+.thongtinPhim h3{
+    color: rgba(255, 255, 255, 0.726);
+}
+.lichchieu{
+    margin-top: 300px;
+}
+.datve{
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+}
+.khoichieu{
+    margin: 140px 0px 10px 0px
+}
+.imdb i{
+    width: 20px;
+    color: orange;
+    font-size: 30px;
+}
+.imdb span{
+    font-size: 25px;
+    /* line-height: 50px; */
+    margin-left: 30px;
+    color: #fff;
+}
+.xemtrailler{
+    margin-top: 10px;
+}

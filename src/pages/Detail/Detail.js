@@ -4,8 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { layChiTietPhimAction } from '../../redux/actions/QuanLyPhimAction';
 import moment from 'moment';
 import { NavLink } from 'react-router-dom';
-export default function Detail(props) {
+import './Detail.css'
 
+export default function Detail(props) {
     //Kết nối với reducer lấy dữ liệu phim về thông qua hook useSelector
     const { chiTietPhim, dsPhim } = useSelector(state => state.QuanLyPhimReducer);
     console.log(chiTietPhim);
@@ -17,16 +18,42 @@ export default function Detail(props) {
     }, [])
 
     return (
-        <div className="container">
-            <div className="row mt-5">
+        <div className='detail'>
+            <div style={{ backgroundImage:`url(${chiTietPhim.hinhAnh})` }} className='back-img'>
+
+            </div>
+            <div className="row mt-5 thongtinPhim">
                 <div classNames="col-4">
-                    <img width={200} src={chiTietPhim.hinhAnh} alt={chiTietPhim.hinhAnh}
+                    <img width={350} height={432} src={chiTietPhim.hinhAnh} alt={chiTietPhim.hinhAnh}
                         onError={(e) => {
                             e.target.src = 'https://picsum.photos/300/300'
                         }} />
+                        <div className='row'>
+                            <div className='col-12'>
+                            <button className='btn btn-danger datve' >Đặt Vé Phim</button>
+
+                            </div>
+                        </div>
                 </div>
                 <div className="col-8">
-                    <table className="table">
+                    <div className='tenPhim'>
+                    <h1>{chiTietPhim.tenPhim}</h1>
+                    <h3>{chiTietPhim.biDanh}</h3>
+                    </div>
+                    <div className='imdb'>
+                    <i class="fab fa-imdb"></i> <span> 7.5</span>
+                    </div>
+                    <button className='btn btn-warning xemtrailler'>Xem Trailer</button>
+                    <div className='khoichieu'>
+                    <p>KHỞI CHIẾU {chiTietPhim.ngayKhoiChieu}</p>
+                    </div>
+                    <div className='noidung'>
+                        <p>
+                           MÔ TẢ : {chiTietPhim.moTa}
+                        </p>
+                    </div>
+                
+                    {/* <table className="table">
                         <thead>
                             <tr>
                                 <th>Tên phim</th>
@@ -39,10 +66,10 @@ export default function Detail(props) {
                         </thead>
                         <hr />
 
-                    </table>
+                    </table> */}
                 </div>
             </div>
-            <div>
+            <div className='container lichchieu'>
                 <h1 className="mt-5 mb-5">Thông tin lịch chiếu</h1>
                 <div className="row">
                     <div className="nav flex-column nav-pills col-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">

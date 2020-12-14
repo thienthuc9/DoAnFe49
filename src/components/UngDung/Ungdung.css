@@ -1,0 +1,51 @@
+.ung-dung {
+    margin-top: 50px;
+    /* width: 1528px; */
+    background-image: url("./background.jpg");
+    /* background-image: url("../../../public/img/background.jpg"); */
+    background-attachment: fixed;
+    padding: 100px;
+}
+.ung-dung__text {
+    padding-right: 30px;
+    color: #ffffffcc;
+    align-self: center;
+}
+.text-u-left {
+    color: #fff;
+    font-weight: 700;
+    font-size: 35px;
+    padding: 5px 0;
+}
+.ung-dung p {
+    font-size: 18px;
+    padding: 0;
+}
+.ung-dung button {
+    background-color: #fb4226;
+    margin: 15px 0;
+    color:  #fff;
+    font-size: 18px;
+}
+/* .ung-dung__dt {
+    @include wh-circle(100%);
+   
+ 
+    }
+  } */
+  img.img-dt {
+      width: 100%;
+    z-index: 500;
+    overflow: hidden;
+  }
+  .ung-dung__img {
+    width: 45%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    /* @include for-size(sm) {
+      width: 60%;
+    } */
+   
+   
+    }

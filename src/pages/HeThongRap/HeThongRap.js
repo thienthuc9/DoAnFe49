@@ -4,6 +4,7 @@ import { LayChiTietRapPhim, LayDanhSachRapPhim } from '../../redux/actions/QuanL
 import moment from 'moment';
 import './HeThongRap.css'
 import { NavLink } from 'react-router-dom';
+import Ungdung from '../../components/UngDung/Ungdung';
 export default function HeThongRap(props) {
     const { dsRap, dsChiTietRap } = useSelector((state) => state.QuanLyRapPhimReducer);
     // console.log('kk',dsChiTietRap)
@@ -13,6 +14,7 @@ export default function HeThongRap(props) {
         dispatch(LayChiTietRapPhim())
     }, [])
     return (
+        <div>
         <div className='row'>
             <div className='col-1'>
             {/* <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist"> */}
@@ -126,6 +128,7 @@ export default function HeThongRap(props) {
 
 
 
+        </div>
 
         </div>
     )

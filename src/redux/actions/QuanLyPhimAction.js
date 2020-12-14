@@ -142,6 +142,44 @@ export const chinhSuaPhim = (PhimDcChon) => ({
     PhimDcChon
    
 })
+export const chinhSuaPhimAction =(Phim)=>{
+    return(dispatch)=>{
+        const {accessToken} =JSON.parse(localStorage.getItem("userLogin"));
+
+        axios({
+            url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload',
+            method:'POST',
+            data:Phim,
+            headers:{
+                Authorization: `Bearer ${accessToken}`,
+              }
+
+        }).then((result)=>{
+            console.log('hihi',result.data)
+            dispatch({
+                type:"SUA_PHIM",
+                suaPhim: result.data
+            })
+            swal.fire(
+                '',
+                `Chỉnh Sửa Phim Thành Công`,
+                'success'
+            )
+
+        }).catch((err)=>{
+            swal.fire(
+                '',
+                `${err.response.data}`,
+                'error'
+            )
+           
+        })
+            
+        
+    }
+    
+}
+
 
 export const ThemLichChieuPhim =(AddLichChieu)=>{
     console.log(AddLichChieu)
@@ -168,7 +206,7 @@ export const ThemLichChieuPhim =(AddLichChieu)=>{
             // })
             swal.fire(
                 '',
-                `Thêm Phim Thành Công`,
+                `Thêm Lịch Chiếu Thành Công`,
                 'success'
             )
 

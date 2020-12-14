@@ -1,14 +1,18 @@
 const { LAY_DANH_SACH_GHE, LAY_DANH_SACH_GHE_SAU } = require("../constants/QuanLyPhongVeConstant");
 
 const initialState = {
+    thongtinPhim:[],
     danhSachGhe: [],
     gheDcChon:[],
 }
 const QuanLyPhongVeReducer = (state = initialState, actions) => {
     switch (actions.type) {
         case LAY_DANH_SACH_GHE: {
-            state.danhSachGhe = actions.danhSachGhe
+            state.danhSachGhe = actions.danhSachGhe.danhSachGhe
+            state.thongtinPhim = actions.danhSachGhe.thongTinPhim
+            console.log(state.thongtinPhim)
             return { ...state };
+
         }
         case "DAT_GHE":{
             const danhSachGhe = [...state.danhSachGhe]

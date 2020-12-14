@@ -1,0 +1,18 @@
+.info_ticket .ant-table-wrapper .ant-table .ant-table-container .ant-table-content {
+    overflow: hidden; } 
+.info_ticket .ant-table-wrapper .ant-table .ant-table-container .ant-table-content .ant-table-thead tr .ant-table-cell {
+  background-color: #000;
+  color: #fff;
+  text-transform: uppercase;
+  border-collapse: collapse; }
+ .info_ticket .ant-table-wrapper .ant-table .ant-table-container .ant-table-content .ant-table-tbody .ant-table-row .ant-table-cell {
+  color: #000;
+  border: 1px solid #F0F0F0;
+  border-collapse: collapse;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 82px; }
+  @media (max-width: 767px) {
+  .info_ticket .ant-table-wrapper .ant-table .ant-table-container .ant-table-content .ant-table-tbody .ant-table-row .ant-table-cell {
+      max-width: 50px; } }

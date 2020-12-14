@@ -1,0 +1,34 @@
+.dang__nhap{
+    background-image: url(./dangky.jpg);
+    background-attachment: fixed;
+    padding: 100px;
+    background-size: cover;
+
+    width: 100%;
+    height: 754.4px;   
+}
+.form_dangnhap{
+    background: #fff;
+    max-width: 480px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,12), 0 5px 5px 0 rgba(0,0,0,.24);
+}
+.form_dangnhap i{
+    background-color: #007bff;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    line-height: 50px !important;
+    font-size: 30px;
+}
+.form_dangnhap input{
+    background-color: #ced4da !important;
+}
+.form_dangnhap .form-group{
+    margin-bottom: 30px;
+
+
+}

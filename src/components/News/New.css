@@ -1,0 +1,14 @@
+.news a{
+    text-decoration: none;
+    transition: 0.5s all;
+}
+.news .col-4 h3{
+    font-size: 20px;
+}
+.news p{
+    color: gray;
+}
+.news a:hover {
+ opacity: 0.7;
+ 
+}

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { NavLink, Redirect, useHistory } from 'react-router-dom'
 import { dangKyNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction';
-
+import './SignUp.css'
 export default function SignUp(props) {
     let dispatch = useDispatch();
     let history = useHistory();
@@ -36,34 +36,35 @@ export default function SignUp(props) {
         )
     }
     return (
+        <div className='dang__ky'>
 
-        <form className="container" onSubmit={login} >
-        <h3 className="display-4 text-center">Đăng Kí</h3>
+
+        <form className='form_dangky'  onSubmit={login} >
+        <i class="fa fa-user-circle"></i>
+
+        <h3 className="display-4 text-center">Đăng Ký</h3>
         <div className="form-group">
-            <p>Họ Và Tên</p>
-            <input name="fullName" className="form-control"  onChange={handleChange} />
+            <input placeholder='Họ và Tên' name="fullName" className="form-control"  onChange={handleChange} />
         </div>
         <div className="form-group">
-            <p>Tài Khoản </p>
-            <input name="userName" className="form-control"  onChange={handleChange}  />
+            <input placeholder='Tài Khoản' name="userName" className="form-control"  onChange={handleChange}  />
         </div>
         <div className="form-group">
-            <p>Mật Khẩu</p>
-            <input name="passWord" className="form-control"  onChange={handleChange} />
+            <input placeholder='Mật Khẩu' name="passWord" className="form-control"  onChange={handleChange} />
         </div>
         <div className="form-group">
-            <p>Email</p>
-            <input name="eMail" className="form-control"  onChange={handleChange} />
+            <input placeholder='Email' name="eMail" className="form-control"  onChange={handleChange} />
         </div>
         <div className="form-group">
-            <p>Số Điện Thoại</p>
-            <input name="Phone" className="form-control"  onChange={handleChange} />
+            <input placeholder='SĐT' name="Phone" className="form-control"  onChange={handleChange} />
         </div>
         <div className="form-group">
            
-            <button className="btn btn-primary" type='submit' >Đăng Ký</button>
+            <button  className="form-control btn btn-primary" type='submit' >Đăng Ký</button>
 
         </div>
     </form>
+    </div>
+
     )
 }

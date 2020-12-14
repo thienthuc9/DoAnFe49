@@ -6,6 +6,7 @@ export default function UpdateUser() {
     const dispatch = useDispatch();
 
     const { nguoiDungDcChon } = useSelector(state => state.QuanLyNguoiDungReducer)
+    console.log(nguoiDungDcChon)
     const [upDate, setUser2] = useState({
         taiKhoan: '',
         matKhau: '',
@@ -36,7 +37,19 @@ export default function UpdateUser() {
     }
 
     return (
-        <form onSubmit={upp} className="container"  >
+        <form  >
+
+        <div className="modal fade" id={`${nguoiDungDcChon.taiKhoan}`} tabIndex={-1} role="dialog" aria-labelledby="update" aria-hidden="true">
+            <div className="modal-dialog modal-dialog-centered" role="document">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLongTitle">Chỉnh Sửa Tài Khoản</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style={{ color: 'red' }}>×</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                    <form onSubmit={upp} className="container"  >
             <div className="form-group">
                 <p>Họ Và Tên</p>
                 <input name="hoTen" className="form-control" onChange={handleChange} value={upDate.hoTen} />
@@ -62,13 +75,15 @@ export default function UpdateUser() {
                 <select name='maLoaiNguoiDung' class="form-control" id="exampleFormControlSelect1" onChange={handleChange}>
                     <option value={`${upDate.maLoaiNguoiDung}`}>{upDate.maLoaiNguoiDung}</option>
                     {
-                        () => {
-                            if (upDate.maLoaiNguoiDung === 'KhachHang') {
-                                return <option value='QuanTri'>Quản Trị</option>
-                            } else {
-                                return <option value='KhachHang'>Khách Hàng</option>
-                            }
-                        }
+                          upDate.maLoaiNguoiDung === 'QuanTri' ?
+                          <option value='KhachHang'>Khách Hàng</option>
+                          :
+                          <>
+                          <option value='QuanTri'>Quản Trị</option>
+
+                          </>
+                             
+                      
                     }
 
                 </select>
@@ -81,5 +96,13 @@ export default function UpdateUser() {
             </div>
 
         </form>
+                    </div>
+                    <div className="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div></form>
+      
     )
 }

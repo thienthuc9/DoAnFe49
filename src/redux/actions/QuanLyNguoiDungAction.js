@@ -238,7 +238,7 @@ export const XoaNguoiDung =(taiKhoan)=>{
             })
             swal.fire(
                 '',
-                `Xóa Khoản Thành Công`,
+                `Xóa Khoản Thành Công Tài Khoản: ${taiKhoan}`,
                 'success'
             )
 
