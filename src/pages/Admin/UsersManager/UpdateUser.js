@@ -33,7 +33,7 @@ export default function UpdateUser() {
         //Gọi api đăng nhập
         dispatch(CapNhatNguoiDungAdmin(upDate))
  
-
+        
     }
 
     return (
@@ -90,9 +90,7 @@ export default function UpdateUser() {
             </div>
             <div className="form-group">
                 <button type="button" className="btn btn-danger" data-dismiss="modal">Đóng</button>
-                <button type="submit" className="btn btn-primary" onClick={() => {
-                    dispatch(CapNhatNguoiDungAdmin(upDate))
-                }}>Sửa</button>
+                <button type="submit" className="btn btn-primary">Sửa</button>
             </div>
 
         </form>

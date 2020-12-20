@@ -91,7 +91,7 @@ export default function Booking(props) {
                     type: "DAT_GHE",
                     ghe,
                 })
-            }} className={handleClassName(ghe)} disabled={ghe.daDat} key={index}>{ghe.tenGhe}</button>
+            }} className={handleClassName(ghe)}  disabled={ghe.daDat} key={index}>{ghe.tenGhe}</button>
            
         })
     };
@@ -130,7 +130,7 @@ export default function Booking(props) {
                                 <button className='btn btn-dark' style={{border:'3px solid yellow',width:'40px',height:'30px'}}></button> Ghế Vip
 
                                 <button style={{width:'40px',height:'30px'}} className='btn btn-info'></button>Ghế Đang Chọn
-                                <button style={{width:'40px',height:'30px'}} className='btn btn-danger'></button> Ghế Đã Được Đặt
+                                <button style={{width:'40px',height:'30px'}} disabled='true' className='btn btn-danger '></button> Ghế Đã Được Đặt
 
                             </div>
                                 </div>
@@ -155,9 +155,9 @@ export default function Booking(props) {
                             </p>
                             <p>
                                 Suất:
-                                <span>{thongtinPhim.gioChieu}</span>
+                                 <span>{thongtinPhim.gioChieu}</span>
                                 -
-                                <span> {thongtinPhim.ngayChieu}</span>
+                                 <span> {thongtinPhim.ngayChieu}</span>
                             </p>
                             <p>
                                 Phòng chiếu:
@@ -169,7 +169,7 @@ export default function Booking(props) {
                             </p>
                                 </div>
                                 <div className='col-5'>
-        <img style={{width:'100%'}} src={thongtinPhim.hinhAnh}></img>
+                         <img style={{width:'100%'}} src={thongtinPhim.hinhAnh}></img>
                                 </div>
 
                             </div>
@@ -180,7 +180,6 @@ export default function Booking(props) {
                                     <th scope="col">Mã ghế</th>
                                     <th scope="col">Loại</th>
                                     <th scope="col">Giá</th>
-                                    <th>{time}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -198,7 +197,7 @@ export default function Booking(props) {
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <td colSpan="2"></td>
+                                    <td colSpan="1"></td>
                                     <td >Tổng Tiền</td>
                                     <td>
                                         {
@@ -211,6 +210,11 @@ export default function Booking(props) {
 
                             </tfoot>
                         </table>
+                        {/* <p>Tổng Tiển <span>{
+                             gheDcChon.reduce((tongtien, ghe, index) => {
+                                return tongtien += ghe.giaVe
+                            }, 0).toLocaleString()
+                            }</span></p> */}
                     </div>
                 </div>
 

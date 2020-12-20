@@ -8,11 +8,12 @@ if(localStorage.getItem(USER_LOGIN)) {
 
 const initialState = {
     userLogin : userLocal,
-    thongTinTaiKhoan:{},
+    thongTinTaiKhoan:[],
     dsNguoiDung:[],
     // nguoiDung:[],
     timKiemND:[],
-    nguoiDungDcChon:{}
+    nguoiDungDcChon:[],
+    capnhatNDUser:[]
 }
 
 export default (state = initialState, action) => {
@@ -44,7 +45,6 @@ export default (state = initialState, action) => {
     }
     case "XOA_NGUOI_DUNG":{
         let dsNguoiDung = [...state.dsNguoiDung]
-        console.log(action.taiKhoan)
         let index = state.dsNguoiDung.findIndex(tk=>tk.taiKhoan === action.taiKhoan)
         console.log(index)
         if(index !=-1){
@@ -56,17 +56,28 @@ export default (state = initialState, action) => {
     }
     case "CHINH_SUA_NGUOI_DUNG":{
         state.nguoiDungDcChon = action.nguoiDung
-        // console.log(action.nguoiDung)
+        console.log(action.nguoiDung)
         return{...state};
     }
     case "CAP_NHAT_TAI_KHOAN_ADMIN":{
         let dsNguoiDung = [...state.dsNguoiDung]
+        console.log(action.capnhatND.taiKhoan)
         let index = state.dsNguoiDung.findIndex(phim=>phim.taiKhoan===action.capnhatND.taiKhoan)
         if (index !== -1){
             dsNguoiDung[index] = {...action.capnhatND}
+
         }
         state.dsNguoiDung = dsNguoiDung;
-        console.log(dsNguoiDung[index])
+        return{...state}
+    }
+    case "CAP_NHAT_TAI_KHOAN_USER":{
+        state.thongTinTaiKhoan = action.capnhatNDUser;
+        return{...state}
+    }
+    case "LAY_THONG_TIN_TK2":{
+        state.thongTinTaiKhoan = action.thongTinTaiKhoan2;
+        console.log(action.thongTinTaiKhoan2)
+
         return{...state}
     }
     default:

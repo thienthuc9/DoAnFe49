@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom'
-import { LayThongTinTaiKhoan } from '../../redux/actions/QuanLyNguoiDungAction';
+import { LayThongTinTaiKhoan,CapNhatNguoiDungUser } from '../../redux/actions/QuanLyNguoiDungAction';
 import moment from 'moment';
 import { Row, Col, Form, Input, Button, Table, Tooltip, message } from 'antd';
-import'./Profile.css'
+import './Profile.css'
 
 export default function Profile(props) {
     const columns = [
@@ -14,7 +14,7 @@ export default function Profile(props) {
             render: (item) => (
                 <Tooltip placement="topLeft" title={item.maVe}>
                     <span>{item.maVe}</span>
-                </Tooltip>   
+                </Tooltip>
             )
         },
         {
@@ -23,7 +23,7 @@ export default function Profile(props) {
             render: (item) => (
                 <Tooltip placement="topLeft" title={item.tenPhim}>
                     <span>{item.tenPhim}</span>
-                </Tooltip>   
+                </Tooltip>
             )
         },
         {
@@ -32,7 +32,7 @@ export default function Profile(props) {
             render: (item) => (
                 <Tooltip placement="topLeft" title={item.ngayDat}>
                     <span>{item.ngayDat}</span>
-                </Tooltip>   
+                </Tooltip>
             )
         },
         {
@@ -41,7 +41,7 @@ export default function Profile(props) {
             render: (item) => (
                 <Tooltip placement="topLeft" title={item.giaVe.toLocaleString()}>
                     <span>{item.giaVe.toLocaleString()}</span>
-                </Tooltip>   
+                </Tooltip>
             )
         },
         {
@@ -50,9 +50,9 @@ export default function Profile(props) {
             render: (item) => {
                 let tenRap = item.danhSachGhe[0].tenHeThongRap;
                 return <Tooltip placement="topLeft" title={tenRap}>
-                            <span>{tenRap}</span>
-                               
-                </Tooltip>   
+                    <span>{tenRap}</span>
+
+                </Tooltip>
             }
         },
         {
@@ -61,9 +61,9 @@ export default function Profile(props) {
             render: (item) => {
                 let tenRap = item.danhSachGhe[0].tenRap;
                 return <Tooltip placement="topLeft" title={tenRap}>
-                            <span>{tenRap}</span>
-                               
-                </Tooltip>   
+                    <span>{tenRap}</span>
+
+                </Tooltip>
             }
         },
         {
@@ -74,38 +74,98 @@ export default function Profile(props) {
                     return item.tenGhe;
                 }).join();
                 return <Tooltip placement="topLeft" title={tenGhe}>
-                            <span>{tenGhe}</span>        
-                </Tooltip>   
+                    <span>{tenGhe}</span>
+                </Tooltip>
             }
         }
     ];
+
     const { thongTinTaiKhoan } = useSelector((state) => state.QuanLyNguoiDungReducer);
-    console.log(thongTinTaiKhoan)
+    const [upDate, setUser2] = useState({
+        taiKhoan: '',
+        matKhau: '',
+        email: '',
+        soDt: '',
+        hoTen: ''
+    });
+    const handleChange = (e) => {
+        const { value, name } = e.target;
+         setUser2({
+            ...upDate,
+            [name]: value
+        })
+        console.log(upDate)
+    }
+    const upp = (e) => {
+        e.preventDefault();
+        //Gọi api đăng nhập
+        dispatch(CapNhatNguoiDungUser(upDate))
+ 
+
+    }
     let dispatch = useDispatch();
     let userLogin = {}
     userLogin = JSON.parse(localStorage.getItem('userLogin'));
 
     useEffect(() => {
-        dispatch(LayThongTinTaiKhoan(userLogin))
-    }, [])
-    // console.log(userLogin.taiKhoan)
+        // dispatch(LayThongTinTaiKhoan(userLogin))
+        setUser2(thongTinTaiKhoan)
+    }, [thongTinTaiKhoan])
+    // console.log(thongTinTaiKhoan)
     if (localStorage.getItem('userLogin')) {
-        
-        return <div className='container'>
-            <div className="card" style={{ width: '18rem' }}>
-                <img className="card-img-top" src="https://picsum.photos/300/300" alt="Card image cap" />
-                <div className="card-body">
-                    <p className="card-text">Xin Chào {`${thongTinTaiKhoan.hoTen}`}</p>
-                    <p>Số Điện thoại: {thongTinTaiKhoan.soDT}</p>
-                    <p>Email: {thongTinTaiKhoan.email}</p>
-                    {userLogin.maLoaiNguoiDung === 'QuanTri' ?
-                <NavLink to="/admin/films">Quản trị hệ thống</NavLink>
-                :
-                <></>
-                   }
 
+        return <div className='container'>
+            <div className='row'>
+                <div className='col-4'>
+                    <div className="card profile" style={{ width: '18rem' }}>
+                        <img className="card-img-top" src="https://picsum.photos/300/300" alt="Card image cap" />
+                        <div className="card-body">
+                            <p className="card-text">Xin Chào {`${thongTinTaiKhoan.hoTen}`}</p>
+                            <p>Số Điện thoại: {thongTinTaiKhoan.soDT}</p>
+                            <p>Email: {thongTinTaiKhoan.email}</p>
+                            {userLogin.maLoaiNguoiDung === 'QuanTri' ?
+                                <NavLink to="/admin/films">Quản trị hệ thống</NavLink>
+                                :
+                                <></>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div className='col-8'>
+                    <div >
+                        <form onSubmit={upp} className='form_profile' >
+                            <div className="form-group">
+                                <p>Họ tên</p>
+                                <input value={upDate.hoTen} onChange={handleChange} name="hoTen" className="form-control" />
+                            </div>
+                            <div className="form-group">
+                                <p>Tài Khoản</p>
+                                <input value={upDate.taiKhoan} onChange={handleChange} name="taiKhoan" className="form-control" />
+                            </div>
+                            <div className="form-group">
+                                <p>Mật Khẩu</p>
+                                <input value={upDate.matKhau} onChange={handleChange} name="matKhau" className="form-control" />
+                            </div>
+                            <div className="form-group">
+                                <p>Email</p>
+                                <input value={upDate.email} onChange={handleChange} name="email" className="form-control" />
+                            </div>
+                            <div className="form-group">
+                                <p>Số điệnt thoại</p>
+                                <input value={upDate.soDT} onChange={handleChange} name="soDt" className="form-control" />
+                            </div>
+                            <div className="form-group">
+                                <button className=" btn btn-primary" type="submit" >Lưu</button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
                 </div>
             </div>
+
             <h1 className='text-center'>LỊCH SỬ ĐẶT VÉ</h1>
             {/* <table class="table">
                 <thead class="thead-dark">
@@ -195,7 +255,7 @@ export default function Profile(props) {
 
             </table> */}
             <div className='info_ticket'>
-            <Table dataSource={thongTinTaiKhoan.thongTinDatVe} columns={columns}  pagination={{ pageSize: 6 }} />
+                <Table dataSource={thongTinTaiKhoan.thongTinDatVe} columns={columns} pagination={{ pageSize: 6 }} />
 
             </div>
 

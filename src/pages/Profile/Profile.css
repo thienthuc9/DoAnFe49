@@ -16,3 +16,15 @@
   @media (max-width: 767px) {
   .info_ticket .ant-table-wrapper .ant-table .ant-table-container .ant-table-content .ant-table-tbody .ant-table-row .ant-table-cell {
       max-width: 50px; } }
+.form_profile{
+    background: #fff;
+    /* max-width: 480px; */
+    margin: 0 auto 100px;
+    padding: 45px;
+    /* text-align: center; */
+    box-shadow: 0 0 20px 0 rgba(0,0,0,12), 0 5px 5px 0 rgba(0,0,0,.24);
+}
+.profile{
+    box-shadow: 0 0 20px 0 rgba(0,0,0,12), 0 5px 5px 0 rgba(0,0,0,.24);
+
+}

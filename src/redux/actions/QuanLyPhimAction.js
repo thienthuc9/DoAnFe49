@@ -44,6 +44,21 @@ export const layDanhSachPhimApiAction = () => {
         dispatch(action);
     }
 }
+export const timKiemPhim = (tenPhim) => {
+    //Thay vì return về object => middleware thunk cho phép mình return về 1 function có tham số là hàm dispatch
+    return async dispatch => {
+       const {data} = await  axios({
+            url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01&tenPhim=${tenPhim}`,
+            method: 'GET'
+        });
+        //Sau khi lấy dữ liệu từ backend về sử dụng hàm dispatch đưa dữ liệu lên reducer
+        const action = {
+            type:"TIM_KIEM_PHIM",
+            timKiemPhim:data
+        };
+        dispatch(action);
+    }
+}
 
 
 
@@ -149,13 +164,15 @@ export const chinhSuaPhimAction =(Phim)=>{
         axios({
             url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload',
             method:'POST',
-            data:Phim,
+            data:Phim,  
             headers:{
                 Authorization: `Bearer ${accessToken}`,
               }
 
         }).then((result)=>{
             console.log('hihi',result.data)
+            dispatch(layDanhSachPhimApiAction());
+
             dispatch({
                 type:"SUA_PHIM",
                 suaPhim: result.data
@@ -179,6 +196,8 @@ export const chinhSuaPhimAction =(Phim)=>{
     }
     
 }
+
+
 
 
 export const ThemLichChieuPhim =(AddLichChieu)=>{

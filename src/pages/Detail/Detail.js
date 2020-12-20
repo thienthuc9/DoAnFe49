@@ -45,7 +45,7 @@ export default function Detail(props) {
                     </div>
                     <button className='btn btn-warning xemtrailler'>Xem Trailer</button>
                     <div className='khoichieu'>
-                    <p>KHỞI CHIẾU {chiTietPhim.ngayKhoiChieu}</p>
+                    <p>KHỞI CHIẾU : {moment(chiTietPhim.ngayKhoiChieu).format('DD-MM-YYYY')}</p>
                     </div>
                     <div className='noidung'>
                         <p>

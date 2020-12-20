@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField'
 import { KeyboardDatePicker } from '@material-ui/pickers';
 import { useDispatch } from 'react-redux';
-import { ThemPhim } from '../../../redux/actions/QuanLyPhimAction'
+import { layChiTietPhimAction, layDanhSachPhimApiAction, ThemPhim, timKiemPhim } from '../../../redux/actions/QuanLyPhimAction'
 import * as moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
@@ -70,10 +70,33 @@ export default function AddFilms() {
         //Gọi api đăng nhập
         // dispatch(ThemNguoiDung(addUser))
     }
+    const [tuKhoa, setTK] = useState(
+
+        )
+    const handleChange2 = (e) => {
+        const { value, name } = e.target;
+        setTK(value)
+    
+      
+      }
+    
+      const TimKiem = (e) => {
+        e.preventDefault();
+        if (tuKhoa) {
+          dispatch(timKiemPhim(tuKhoa));
+    
+        } else {
+          dispatch(layDanhSachPhimApiAction())
+    
+        }
+    
+      }
 
 
     return (
-        <form  >
+        <div className='row'>
+            <div className='col-2'>
+            <form  >
             <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                 Thêm Phim
         </button>
@@ -131,5 +154,17 @@ export default function AddFilms() {
                     </div>
                 </div>
             </div></form>
+            </div>
+            <div className='col-5'>
+            <div className="input-group" >
+                        <input placeholder='Tìm kiếm' type="text" name='tuKhoa' className="form-control" onChange={handleChange2} aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                        <div className="input-group-append">
+                            <button className="btn btn-outline-secondary " onClick={TimKiem} type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+    
     )
 }

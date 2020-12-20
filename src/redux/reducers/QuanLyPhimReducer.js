@@ -4,6 +4,7 @@ const stateDefault = {
     dsPhim: [],
     chiTietPhim: [],
     phimDcChon:[],
+    timKiemPhim:[],
 }
 
 
@@ -35,6 +36,10 @@ const QuanLyPhimReducer = (state = stateDefault, action) => {
         }
         case "CHINH_SUA_PHIM":{
             state.phimDcChon = action.PhimDcChon
+            return{...state}
+        }
+        case "TIM_KIEM_PHIM":{
+            state.dsPhim = action.timKiemPhim
             return{...state}
         }
         // case "THEM_LICH_CHIEU":{

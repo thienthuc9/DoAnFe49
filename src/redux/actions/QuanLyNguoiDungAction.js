@@ -98,6 +98,32 @@ export const LayThongTinTaiKhoan = (userLogin) => {
                 thongTinTaiKhoan : result.data
 
             })
+            console.log(result.data)
+
+        }
+
+
+        ).catch((err) => { 
+            console.log(err.response.data);
+        })
+    }
+}
+export const LayThongTinTaiKhoan2 = (taiKhoan) => {
+
+    return (dispatch) => {
+        Axios({
+            url: 'https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan',
+            method: "POST",
+            data: {
+                taiKhoan
+            }
+        }).then((result) => {
+            dispatch({
+                type:"LAY_THONG_TIN_TK2",
+                thongTinTaiKhoan2 : result.data
+
+            })
+            console.log(result.data)
 
         }
 
@@ -278,9 +304,56 @@ export const CapNhatNguoiDungAdmin =(nguoiDungDcChon)=>{
 
         }).then((result)=>{
             console.log("hihi",result.data)
+            dispatch(LayDanhSachNguoiDung());
+
+        //    dispatch({
+        //        type: "CAP_NHAT_TAI_KHOAN_ADMIN",
+        //        capnhatND : result.data,
+        //    })
+           swal.fire(
+            '',
+            `Cập Nhật Tài Khoản Thành Công`,
+            'success'
+        )
+
+
+        }).catch((err)=>{
+            swal.fire(
+                '',
+                `${err.response.data}`,
+                'error'
+            )
+            console.log(err);
+        })
+            
+        
+    }
+}
+export const CapNhatNguoiDungUser =(nguoiDungDcChon)=>{
+    const {accessToken} =JSON.parse(localStorage.getItem("userLogin"));
+    // console.log(nguoiDungDcChon);
+
+    return(dispatch)=>{
+        Axios({
+            url:`https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+            method:'PUT',
+            data:{
+                taiKhoan:nguoiDungDcChon.taiKhoan,
+                matKhau:nguoiDungDcChon.matKhau,
+                email:nguoiDungDcChon.email,
+                soDt:nguoiDungDcChon.soDt,
+                maNhom:"GP01",
+                maLoaiNguoiDung:"KhachHang",
+                hoTen:nguoiDungDcChon.hoTen
+            },
+            headers:{
+                Authorization: `Bearer ${accessToken}`,
+              }
+
+        }).then((result)=>{
            dispatch({
-               type: "CAP_NHAT_TAI_KHOAN_ADMIN",
-               capnhatND : result.data,
+               type: "CAP_NHAT_TAI_KHOAN_USER",
+               capnhatNDUser : result.data,
            })
            swal.fire(
             '',

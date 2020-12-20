@@ -49,9 +49,10 @@ function App() {
         {/* <AdminTemplate exact path='/admin/users' Component={UserManager} /> */}
         <AdminTemplate exact path ='/admin/users' Component={test}></AdminTemplate>
         <AdminTemplate exact path='/admin/films/:id' Component={AddLichChieu}></AdminTemplate>
-        <Route exact path='/booking/:maLichChieu' render={(propsRoute)=>{
+        <HomeTemplate exact path='/booking/:maLichChieu' Component={Booking} ></HomeTemplate>
+        {/* <Route exact path='/booking/:maLichChieu' render={(propsRoute)=>{
             return <Booking {...propsRoute} />
-        }}/>
+        }}/> */}
         
         <HomeTemplate exact path='/' Component={Home} />
         <Route exact path='*' component={PageNotFound} />
