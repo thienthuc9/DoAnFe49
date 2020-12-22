@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { NavLink, Route } from 'react-router-dom';
+import { Link, NavLink, Route } from 'react-router-dom';
 import { Layout, Menu,Breadcrumb } from 'antd';
 import {
     DesktopOutlined,
@@ -30,7 +30,15 @@ export const AdminTemplate = ({ Component, ...restProps }) => {
         return <Fragment>
              <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={state.collapsed} onCollapse={state.onCollapse}>
-          <div className="logo" />
+          <div className="logo" >
+          <Link 
+                                to="/home" 
+                               
+                               
+                            >
+                                MOVIE
+                            </Link>
+          </div>
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             <Menu.Item key="1" icon={<DesktopOutlined />}>
             <NavLink to='/admin/films'>Quản lý Phim</NavLink>
@@ -43,7 +51,7 @@ export const AdminTemplate = ({ Component, ...restProps }) => {
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }} />
+          {/* <Header className="site-layout-background" style={{ padding: 0 }} > <Header> */}
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
              
@@ -53,7 +61,7 @@ export const AdminTemplate = ({ Component, ...restProps }) => {
            
             </Component>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+          <Footer style={{ textAlign: 'center' }}>Quản Lý Web Phim</Footer>
         </Layout>
       </Layout>
     

@@ -78,13 +78,13 @@ export default function LichSuDatVe() {
         }
     ];
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(LayThongTinTaiKhoan2(nguoiDungDcChon));
-        // setUser2({
-        //     upDate:nguoiDungDcChon
-        // })
+    // useEffect(() => {
+    //     dispatch(LayThongTinTaiKhoan2(nguoiDungDcChon));
+    //     // setUser2({
+    //     //     upDate:nguoiDungDcChon
+    //     // })
     
-      }, [])
+    //   }, [])
     const { thongTinTaiKhoan,nguoiDungDcChon } = useSelector((state) => state.QuanLyNguoiDungReducer);
 
    

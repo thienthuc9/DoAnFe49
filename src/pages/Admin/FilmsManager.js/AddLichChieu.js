@@ -7,50 +7,68 @@ import { ThemLichChieuPhim, layChiTietPhimAction } from '../../../redux/actions/
 import { LayDanhSachRapPhim, LayThongTinCumRapTheoHeThongRap, layDSMaRapTenRap } from '../../../redux/actions/QuanLiRapPhimAction'
 import { keys } from '@material-ui/core/styles/createBreakpoints';
 import ChiTietRap from '../../ChiTietRap/ChiTietRap';
+import Swal from 'sweetalert2';
+import { Redirect } from 'react-router-dom';
 export default function AddLichChieu(props) {
     const columns = [
         {
-          title: 'Mã Lịch Chiếu',
-          dataIndex: 'tenPhim',
-          key: 'tenPhim',
-          render: (item) => {
-            let tenRap = item.tenPhim;
-            return <Tooltip placement="topLeft" title={tenRap}>
-                        <span>{tenRap}</span>
-                           
-            </Tooltip>   
-        }
+            title: 'Mã Lịch Chiếu',
+            
+            render: (item) => {
+                return item.cumRapChieu.map((heThong) => {
+                    {
+                        // return Phim.cumRapChieu.map((heThong, index) => {
+                            return heThong.lichChieuPhim.map((CumRap, index) => {
+                                //        return CumRap.map((lichChieu,index)=>{
+                                //             return  lichChieu.lichChieuPhim.map((LC,index)=>{
+                                return            <span key={index}>{CumRap.maLichChieu}</span>
+
+
+                                //         })
+                            })
+                        // })
+                    }
+                });
+                // return <Tooltip placement="topLeft" title={maLichChieu}>
+                // </Tooltip>
+
+            },            
+            
         },
         // {
-        //   title: 'Mã Hệ Thông Rạp',
-        //   dataIndex: 'maHeThongRap',
-        //   key: 'maHeThongRap',
+        //     title: 'Tên Cụm Rạp',
+        //     key: 'tenCumRap',
+        //     render: (item) => {
+        //         let tenCumRap = item.cumRapChieu.map((heThong) => {
+        //                 return heThong.tenCumRap ;
+        //         })
+        //         return <a placement="topLeft">
+        //             <span>{tenCumRap}</span>
+        //         </a>
+        //     }
         // },
         // {
-        //   title: 'Mã Cụm Rạp',
-        //   dataIndex: 'maCumRap',
-        //   key: 'maCumRap',
-        // },
-        // {
-        //     title: 'Mã Rạp',
-        //     dataIndex: 'maRap',
+        //     title: 'Mã Rạp Chiếu',
         //     key: 'maRap',
+        //     render: (item) => {
+        //         let maRap = item.cumRapChieu.map((heThong) => {
+        //             {
+        //                 // return Phim.cumRapChieu.map((heThong, index) => {
+        //                     return heThong.lichChieuPhim.map((CumRap, index) => {
+        //                         //        return CumRap.map((lichChieu,index)=>{
+        //                         //             return  lichChieu.lichChieuPhim.map((LC,index)=>{
+        //                         return  CumRap.maRap
+        //                         //         })
+        //                     })
+        //                 // })
+        //             }
+        //         }).join();;
+        //         return <Tooltip placement="topLeft" title={maRap}>
+        //             <span>{maRap}</span>
+        //         </Tooltip>
+        //     }
         // },
-        // {
-        //   title: 'Ngày Chiếu Giờ Chiếu',
-        //   key: 'ngayChieuGioChieu',
-        //   dataIndex: 'ngayChieuGioChieu',
-        //   render:(item)=>{
-        //     return    <td>{moment(item.ngayChieuGioChieu).format('DD-MM-YYYY' + ' ' + 'HH:mm')}</td>
-
-        // }
-       
-        // },
-        // {
-        //     title: 'Giá Vé',
-        //     key: 'giaVe',
-        //     dataIndex: 'giaVe',
-        // }
+        
        
       ];
     const dispatch = useDispatch();
@@ -116,7 +134,10 @@ export default function AddLichChieu(props) {
         dispatch(layChiTietPhimAction(props.match.params.id));
         dispatch(LayDanhSachRapPhim());
     }, [])
-
+    let userLogin = {}
+  userLogin = JSON.parse(localStorage.getItem('userLogin'));
+  console.log(userLogin.maLoaiNguoiDung)
+  if (userLogin.maLoaiNguoiDung==="QuanTri") {
     return (
         <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
             <h1 className='text-center'>Thêm Lịch Chiếu Phim: {chiTietPhim.tenPhim} </h1>
@@ -221,7 +242,6 @@ export default function AddLichChieu(props) {
                         <tr>
                             <th scope="col">Mã Lịch Chiếu</th>
 
-                            <th scope="col">Mã Hệ Thống Rạp</th>
                             <th scope="col">Mã Cụm Rạp</th>
                             <th scope="col">Mã  Rạp</th>
 
@@ -239,7 +259,6 @@ export default function AddLichChieu(props) {
                                         //             return  lichChieu.lichChieuPhim.map((LC,index)=>{
                                         return <tr>
                                             <td>{CumRap.maLichChieu}</td>
-                                            <td>{Phim.maHeThongRap}</td>
                                             <td>{heThong.tenCumRap}</td>
                                             <td>{CumRap.maRap}( {CumRap.tenRap})</td>
                                             <td>{moment(CumRap.ngayChieuGioChieu).format('DD-MM-YYYY' + ' ' + 'HH:mm')}</td>
@@ -254,10 +273,22 @@ export default function AddLichChieu(props) {
 
                     </tbody>
                 </table>
-                        {/* <Table pagination={{ pageSize: 10 }} size="middle" columns={columns} dataSource={chiTietPhim} className="table__users"/> */}
+                {/* <Table dataSource={chiTietPhim.heThongRapChieu} columns={columns} pagination={{ pageSize: 6 }}  /> */}
 
             </div>
 
         </div>
     )
+}
+Swal.fire(
+    '',
+    `Bạn Không Có Quyền`,
+    'warning'
+  )
+  return(
+    <Redirect to='/home' />
+  
+  
+  )
+
 }

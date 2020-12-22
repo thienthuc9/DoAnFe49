@@ -91,10 +91,7 @@ export const ThemPhim =(addFilm)=>{
 
         }).then((result)=>{
             console.log('hihi',result.data)
-            dispatch({
-                type:"THEM_PHIM",
-                themPhim: result.data
-            })
+            dispatch(layDanhSachPhimApiAction())
             swal.fire(
                 '',
                 `Thêm Phim Thành Công`,
@@ -124,14 +121,12 @@ export const XoaPhim =(maPhim)=>{
            
             headers:{
                 Authorization: `Bearer ${accessToken}`,
+                // ContentType : 'application/json',
               }
 
         }).then((result)=>{
             console.log(result.data)
-            dispatch({
-                type: "XOA_PHIM",
-                maPhim:maPhim
-            })
+            dispatch(layDanhSachPhimApiAction())
             swal.fire(
                 '',
                 `Xóa Phim Thành Công`,
@@ -219,10 +214,10 @@ export const ThemLichChieuPhim =(AddLichChieu)=>{
               }
 
         }).then((result)=>{
-            // dispatch({
-            //     type:"THEM_LICH_CHIEU", 
-            //     themLichChieu: AddLichChieu
-            // })
+            dispatch(
+                layChiTietPhimAction(AddLichChieu.maPhim)
+
+            )
             swal.fire(
                 '',
                 `Thêm Lịch Chiếu Thành Công`,

@@ -162,7 +162,7 @@ export default function Header() {
                                 localStorage.getItem('userLogin')?
                                 <li className="nav-item dropdown">
                                  <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                 <Avatar icon={<UserOutlined />} />   {`${thongTinTaiKhoan?.hoTen}`
+                                 <Avatar icon={<UserOutlined />} />   {`${userLogin?.hoTen}`
                                                               
                                                             }
                           </a>

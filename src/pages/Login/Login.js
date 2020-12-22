@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import {NavLink, useHistory} from 'react-router-dom'
+import {NavLink, Redirect, useHistory} from 'react-router-dom'
 import { dangNhapApiAction } from '../../redux/actions/QuanLyNguoiDungAction';
 //
 import './Login.css'
@@ -46,6 +46,13 @@ export default function Login(props) {
         dispatch(dangNhapApiAction(userLogin,history))
 
 
+    }
+    if (localStorage.getItem('userLogin')){
+        return (
+
+
+            <Redirect to='/' />
+        )
     }
 
     return (

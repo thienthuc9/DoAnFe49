@@ -67,6 +67,7 @@ export default function Detail(props) {
                         <hr />
 
                     </table> */}
+                    {/* <rap htien={Item.maphjm}></rap> */}
                 </div>
             </div>
             <div className='container lichchieu'>

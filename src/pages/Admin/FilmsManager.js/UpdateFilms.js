@@ -27,6 +27,7 @@ export default function UpdateFilms() {
                 hinhAnh: e.target.files[0]
 
             })
+
         } else if (e.target.name === 'ngayKhoiChieu') {
             setFilm({
                 ...upDate,
@@ -38,7 +39,7 @@ export default function UpdateFilms() {
                 [name]: value
             })
         }
-        console.log(upDate)
+     
     }
     const upp = (e) => {
         e.preventDefault();
@@ -58,6 +59,20 @@ export default function UpdateFilms() {
         setFilm(phimDcChon)
 
     }, [phimDcChon])
+    const img = (e) => {
+        setFilm({
+            ...upDate,
+            hinhAnh: e.target.files[0]
+
+        })
+
+        return <>
+            <img style={{ width: '100px' }} src={upDate.hinhAnh} />
+        </>
+
+
+
+    }
 
     return (
         <form  >
@@ -93,8 +108,11 @@ export default function UpdateFilms() {
                                 <div className="form-group">
                                     <p>Hình Ảnh</p>
                                     <input type='file' name="hinhAnh" className="form-control" onChange={handleChange} />
+
                                     {
-                                        upDate.hinhAnh && <img src={upDate.hinhAnh} />
+                                    <>
+                                    <img style={{ width: '100px' }} src={upDate.hinhAnh} />
+                                </>
 
                                     }
 

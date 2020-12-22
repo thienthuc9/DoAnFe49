@@ -3,7 +3,6 @@ import axios from 'axios';//Thư viện kết nối BE api
 import {layDanhSachPhimApiAction} from '../../redux/actions/QuanLyPhimAction';
 import {connect,useSelector,useDispatch} from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import DemoHOC from '../HOC/DemoHOC';
 import HeThongRap from '../HeThongRap/HeThongRap';
 import Ungdung from '../../components/UngDung/Ungdung';
 import News from '../../components/News/News';
@@ -94,6 +93,8 @@ import SelectPhim from '../../components/SelectPhim/SelectPhim';
             </div>
         })
     }
+
+   
     return (
         <div>
             <Carousel></Carousel>
